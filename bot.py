@@ -4,7 +4,7 @@ import asyncio
 import aiogram.utils.markdown as fmt
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.dispatcher.filters import Text
-from ru_excuses import outputphraze
+from ru_excuses import getRandomExcuse
 
 bot = Bot(token="5110024379:AAHpD7BcLrb3MNNtcCPlQxZ0XDhwKZsY1Ko")
 dp = Dispatcher(bot)
@@ -24,17 +24,12 @@ async def cmd_start(message: types.Message):
 
 @dp.message_handler()
 async def any_text_message1(message: types.Message):
-    excuseText = message.text, outputphraze
-
-    def returnToString(excuseText): 
-        stroka = ''
-        for ele in excuseText: 
-            stroka += ele   
-        return stroka
-
-    await message.answer(f'Ну что, {fmt.quote_html(message.text)}, получай отмазку:')
-    await asyncio.sleep(0.5)
-    await message.answer(returnToString(excuseText))
+    excuseTextFore = f'{fmt.quote_html(message.text)}{getRandomExcuse()}'
+    excuseText = excuseTextFore
+    
+    await message.answer(f'Генерируем отмазку...')
+    await asyncio.sleep(1)
+    await message.answer(excuseText)
 
 # async def cmd_start(message: types.Message):
 #     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -50,11 +45,6 @@ async def any_text_message1(message: types.Message):
 # @dp.message_handler(Text(equals="🇷🇺 Русский"))
 # async def with_puree(message: types.Message):
 #     await message.answer("Отлично! Добро пожаловать!")
-
-
-# @dp.message_handler()
-# async def any_text_message2(message: types.Message):
-#     await message.answer(f"Привет, {fmt.quote_html(message.text)}")
 
 if __name__ == "__main__":
     executor.start_polling(dp, skip_updates=True)

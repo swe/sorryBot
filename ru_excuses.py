@@ -1,5 +1,8 @@
 import random
 
+def getRandomExcuse():
+    return f'{random.choice(hello)} {random.choice(fail)}. {random.choice(action)} {random.choice(date)}. {random.choice(general)}.'
+
 hello = [
     ', привет!',
     ', здравствуй!',
@@ -145,16 +148,4 @@ general = [
     'Я, конечно, очень извиняюсь, что так вышло'
 ]
 
-output = [ random.choice(hello), " ", random.choice(fail), ". ", random.choice(action), " ", random.choice(date), ".", " ", random.choice(general), "." ]
-
-def listToString(output): 
-    str = "" 
-    for ele in output: 
-        str += ele   
-    return str
-
-outputphraze = listToString(output)
-print(outputphraze)
-
-
-
+print(getRandomExcuse())
