@@ -27,10 +27,10 @@ async def any_text_message1(message: types.Message):
     excuseText = message.text, outputphraze
 
     def returnToString(excuseText): 
-        str = ''
+        stroka = ''
         for ele in excuseText: 
-            str += ele   
-        return str
+            stroka += ele   
+        return stroka
 
     await message.answer(f'Ну что, {fmt.quote_html(message.text)}, получай отмазку:')
     await asyncio.sleep(0.5)
