@@ -6,7 +6,7 @@ from aiogram import Bot, Dispatcher, executor, types
 from aiogram.dispatcher.filters import Text
 from ru_excuses import getRandomExcuse
 
-bot = Bot(token="5110024379:AAHpD7BcLrb3MNNtcCPlQxZ0XDhwKZsY1Ko")
+bot = Bot(token="****")
 dp = Dispatcher(bot)
 logging.basicConfig(level=logging.INFO)
 
